@@ -70,14 +70,14 @@ export function ProcessBreakdown() {
               >
                 <Link
                   href={card.featured ? "/teknologjia" : "/si-operojme"}
-                  className={`flex items-start gap-4 rounded-xl p-4 transition-all duration-200 ${
+                  className={`flex items-start gap-4 rounded-[1.25rem] p-5 transition-all duration-300 ${
                     card.featured
-                      ? "bg-primary text-primary-foreground shadow-md hover:shadow-lg"
-                      : "bg-muted/50 hover:bg-muted border border-border"
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/25"
+                      : "bg-white hover:bg-slate-50 border border-slate-100 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]"
                   }`}
                 >
                   <span
-                    className={`shrink-0 flex h-10 w-10 items-center justify-center rounded-lg ${
+                    className={`shrink-0 flex h-11 w-11 items-center justify-center rounded-xl ${
                       card.featured ? "bg-white/20" : "bg-white text-primary"
                     }`}
                   >
@@ -114,7 +114,7 @@ export function ProcessBreakdown() {
 
         <div className="lg:col-span-2">
           <motion.div
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg bg-muted/30"
+            className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-[var(--shadow-hero)] bg-muted/30"
             initial={{ opacity: 0, x: 16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

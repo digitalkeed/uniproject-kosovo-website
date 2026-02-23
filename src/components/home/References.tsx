@@ -15,11 +15,11 @@ const referenceLogos = [
 
 export function References() {
   return (
-    <Section className="bg-gradient-to-b from-muted/50 to-white">
+    <Section className="bg-section-alt">
       <div className="grid gap-10 lg:grid-cols-5 lg:gap-12 lg:items-center">
         <div className="lg:col-span-2">
           <motion.div
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg"
+            className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-[var(--shadow-hero)]"
             initial={{ opacity: 0, x: -16 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -52,7 +52,7 @@ export function References() {
           <div className="mt-8 flex justify-center lg:justify-start">
             <Link
               href="/projekte"
-              className="inline-flex items-center gap-2 rounded-lg border-2 border-primary px-5 py-2.5 text-sm font-medium text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-2xl border-2 border-primary px-6 py-3 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)]"
             >
               Shiko të gjitha projektet
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

@@ -5,7 +5,7 @@ export function WhyUs() {
   return (
     <Section className="bg-white">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1">
+        <div className="relative aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-[var(--shadow-hero)] order-2 lg:order-1">
           <Image
             src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
             alt="Ekipi UNI PROJECT në punë – profesionalizëm dhe përkushtim"

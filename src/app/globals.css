@@ -2,27 +2,211 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==========================================================================
+   UNI PROJECT – Design system (visual depth, hierarchy, premium polish)
+   ========================================================================== */
+
 :root {
-  /* UNI PROJECT brand: dark blue #22416f, olive green #6e9e3c */
-  --background: #fafafa;
-  --foreground: #1a2744;
-  --primary: #22416f;
+  /* Brand */
+  --background: #fafbfc;
+  --foreground: #0f172a;
+  --primary: #1e3a5f;
   --primary-foreground: #ffffff;
-  --primary-green: #6e9e3c;
+  --primary-hover: #152a47;
+  --primary-green: #5a8a2e;
+  --accent: #5a8a2e;
   --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #6e9e3c;
+  --muted-foreground: #475569;
   --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --section-alt: #f1f5f9;
+  --section-warm: #faf8f5;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+
+  /* Typography – Helvetica / system stack only, no decorative fonts */
+  --font-sans: Helvetica, Arial, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-hero: clamp(2.25rem, 5vw + 1rem, 3.5rem);
+  --text-h1: clamp(2rem, 4vw + 0.5rem, 3rem);
+  --text-h2: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
+  --text-h3: clamp(1.25rem, 2vw + 0.25rem, 1.5rem);
+  --text-body: 1rem;
+  --text-body-lg: 1.125rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.8125rem;
+  --text-caption: 0.75rem;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-relaxed: 1.6;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.02em;
+
+  /* Spacing scale – vertical rhythm */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --section-y: clamp(4rem, 10vw, 6.5rem);
+  --container-px: clamp(1.25rem, 4vw, 2rem);
+  --container-max: 1200px;
+
+  /* Radius – refined, consistent */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-button: 0.75rem;
+  --radius-card: 1.25rem;
+
+  /* Elevation – visual depth (layered shadows) */
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 2px 4px rgb(0 0 0 / 0.04), 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.12);
+  --shadow-card: 0 4px 12px rgb(0 0 0 / 0.06), 0 2px 4px rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 20px 40px -10px rgb(0 0 0 / 0.12), 0 8px 16px -6px rgb(0 0 0 / 0.06);
+  --shadow-button: 0 4px 14px rgb(30 58 95 / 0.25);
+  --shadow-button-hover: 0 8px 20px rgb(30 58 95 / 0.3);
+  --shadow-hero: var(--shadow-2xl);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography utility classes – use these for hierarchy */
+@layer components {
+  .text-hero {
+    font-size: var(--text-hero);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    font-weight: 700;
+  }
+  .text-h1 {
+    font-size: var(--text-h1);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    font-weight: 700;
+  }
+  .text-h2 {
+    font-size: var(--text-h2);
+    line-height: var(--leading-snug);
+    font-weight: 700;
+  }
+  .text-h3 {
+    font-size: var(--text-h3);
+    line-height: var(--leading-snug);
+    font-weight: 600;
+  }
+  .text-body-lg {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-relaxed);
+  }
+  .text-caption {
+    font-size: var(--text-caption);
+    line-height: var(--leading-snug);
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    font-weight: 600;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Section backgrounds – alternating depth */
+  .bg-section-alt {
+    background-color: var(--section-alt);
+  }
+  /* Çfarë ofrojmë section: soft gradient + subtle noise (not flat) */
+  .bg-section-offer {
+    background: linear-gradient(180deg, #eef2f7 0%, #f1f5f9 40%, #f6f8fb 100%);
+    position: relative;
+  }
+  .bg-section-offer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .bg-section-warm {
+    background: linear-gradient(180deg, var(--section-warm) 0%, var(--background) 100%);
+  }
+  .bg-section-gradient {
+    background: linear-gradient(180deg, var(--muted) 0%, var(--background) 100%);
+  }
+  .bg-surface {
+    background: var(--surface);
+  }
+  .bg-hero-tint {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #eef2f7 100%);
+  }
+
+  /* Content width */
+  .max-w-content {
+    max-width: 42rem;
+  }
+  .max-w-prose {
+    max-width: 65ch;
+  }
+
+  /* Card elevation utilities */
+  .elevation-card {
+    box-shadow: var(--shadow-card);
+  }
+  .elevation-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Trust badges */
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    background: var(--surface);
+    color: var(--foreground);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow var(--duration-normal) var(--ease-out), border-color var(--duration-normal);
+  }
+  .badge-pill:hover {
+    box-shadow: var(--shadow-sm);
+    border-color: var(--border-strong);
   }
 }

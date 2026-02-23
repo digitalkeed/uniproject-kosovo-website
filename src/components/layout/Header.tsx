@@ -2,24 +2,23 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-const navItems = [
-  { href: "/", label: "Ballina" },
-  { href: "/sherbimet", label: "Shërbimet" },
-  { href: "/sektoret", label: "Sektorët" },
-  { href: "/si-operojme", label: "Si operojmë" },
-  { href: "/teknologjia", label: "Teknologjia" },
-  { href: "/standardet", label: "Standarde & Siguria" },
-  { href: "/projekte", label: "Projekte" },
-  { href: "/kontakt", label: "Kontakt" },
-];
+import { navItems } from "@/content/nav";
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
+  const linkClass = (href: string) =>
+    `text-sm font-medium transition-colors ${
+      isActive(href) ? "text-primary font-semibold" : "text-foreground/80 hover:text-primary"
+    }`;
+
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+    <header className="sticky top-0 z-50 border-b border-slate-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-[var(--shadow-card)]">
       <div className="mx-auto flex max-w-container items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link href="/" className="shrink-0 flex items-center" aria-label="UNI PROJECT – Ballina">
           <Image
@@ -37,7 +36,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className={linkClass(item.href)}
             >
               {item.label}
             </Link>
@@ -53,7 +52,7 @@ export function Header() {
           </a>
           <Link
             href="/kontakt"
-            className="inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+            className="inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 shadow-[var(--shadow-card-hover)] transition-all duration-200"
           >
             Kerko oferte
           </Link>
@@ -79,7 +78,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="py-2 text-foreground hover:text-primary"
+                className={`py-2 ${isActive(item.href) ? "text-primary font-semibold" : "text-foreground hover:text-primary"}`}
                 onClick={() => setOpen(false)}
               >
                 {item.label}

@@ -60,7 +60,7 @@ export function SectorsStrip() {
           >
             <Link
               href={s.href}
-              className="group block rounded-xl border border-border bg-white shadow-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-primary/40 hover:-translate-y-1"
+              className="group block rounded-[1.25rem] border border-slate-100 bg-white shadow-[var(--shadow-card)] overflow-hidden transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/20 hover:-translate-y-0.5"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image

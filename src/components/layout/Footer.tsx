@@ -1,17 +1,5 @@
 import Link from "next/link";
-
-const navLinks = [
-  { href: "/", label: "Ballina" },
-  { href: "/sherbimet", label: "Shërbimet" },
-  { href: "/kontakt", label: "Kontakti" },
-];
-
-const serviceLinks = [
-  { href: "/sherbimet/pastrim-profesional", label: "Pastrim profesional" },
-  { href: "/sherbimet/facility-management", label: "Facility Management" },
-  { href: "/sherbimet/dezinfektim-sanitizim", label: "Dezinfektim & Sanitizim" },
-  { href: "/sherbimet/on-call", label: "On-call & Emergjencë" },
-];
+import { footerNav, footerServiceLinks } from "@/content/nav";
 
 export function Footer() {
   return (
@@ -33,7 +21,7 @@ export function Footer() {
               Navigimi
             </h3>
             <ul className="mt-3 space-y-2">
-              {navLinks.map((item) => (
+              {footerNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
@@ -51,7 +39,7 @@ export function Footer() {
               Shërbimet
             </h3>
             <ul className="mt-3 space-y-2">
-              {serviceLinks.map((item) => (
+              {footerServiceLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

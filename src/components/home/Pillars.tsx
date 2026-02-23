@@ -31,30 +31,30 @@ const pillars = [
 
 export function Pillars() {
   return (
-    <Section id="sherbimet" className="bg-white">
+    <Section id="sherbimet" className="bg-section-alt">
       <div className="text-center mb-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-          Tre shtylla – një partner
+        <h2 className="text-h2 font-bold text-foreground">
+          Shërbimet tona kryesore
         </h2>
-        <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
-          Pastrim profesional, facility management dhe shërbime të specializuara
-          që përshtaten me çdo sektor dhe çdo nevojë.
+        <p className="mt-3 text-body-lg text-muted-foreground max-w-content mx-auto">
+          Mbështetuni te ne si partner i besueshëm – pastrim profesional, facility management
+          dhe shërbime të specializuara për çdo sektor.
         </p>
       </div>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-8 md:grid-cols-3">
         {pillars.map((p) => (
           <Card key={p.title} href={p.href} variant="service">
-            <div className="relative aspect-[16/10] -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-xl">
+            <div className="relative aspect-[16/10] -mx-6 -mt-6 mb-5 overflow-hidden rounded-t-card">
               <Image
                 src={p.image}
                 alt={p.imageAlt}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-slow ease-out group-hover:scale-[1.02]"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
-            <h3 className="text-lg font-semibold text-foreground">{p.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
+            <h3 className="text-h3 text-foreground">{p.title}</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.description}</p>
           </Card>
         ))}
       </div>

@@ -60,13 +60,13 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.35, delay: i * 0.08 }}
-            className="group rounded-xl border border-border bg-white p-6 shadow-sm flex flex-col transition-all duration-300 hover:shadow-md hover:border-primary/20 hover:-translate-y-0.5"
+            className="group rounded-[1.25rem] border border-slate-100 bg-white p-6 shadow-[var(--shadow-card)] flex flex-col transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/10 hover:-translate-y-0.5"
           >
             <StarRating />
             <p className="mt-3 text-muted-foreground flex-1 leading-relaxed">
               &ldquo;{t.quote}&rdquo;
             </p>
-            <div className="mt-4 pt-4 border-t border-border">
+            <div className="mt-4 pt-4 border-t border-slate-100">
               <p className="font-semibold text-foreground text-sm">{t.author}</p>
               <p className="text-xs text-muted-foreground mt-0.5">{t.context}</p>
             </div>

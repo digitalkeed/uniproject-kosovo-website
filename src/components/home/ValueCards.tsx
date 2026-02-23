@@ -38,12 +38,12 @@ const cards = [
 
 export function ValueCards() {
   return (
-    <Section className="bg-white">
-      <div className="text-center mb-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+    <Section className="bg-section-gradient">
+      <div className="text-center mb-12">
+        <h2 className="text-h2 font-bold text-foreground">
           Pse na zgjidhin klientët
         </h2>
-        <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
+        <p className="mt-3 text-body-lg text-muted-foreground max-w-content mx-auto">
           Besueshmëri, cilësi dhe transparencë – vlerat që na bëjnë partner kryesor në Kosovë.
         </p>
       </div>
@@ -51,17 +51,17 @@ export function ValueCards() {
         {cards.map((card, i) => (
           <motion.div
             key={card.title}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.35, delay: i * 0.08 }}
-            className="group rounded-xl border border-border bg-white p-6 text-center shadow-sm transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5"
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.35, delay: i * 0.08, ease: [0.33, 1, 0.68, 1] }}
+            className="group rounded-card border border-border bg-surface p-8 text-center shadow-card transition-all duration-normal ease-out hover:shadow-card-hover hover:border-primary/20 hover:-translate-y-1"
           >
-            <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4 transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+            <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary mb-6 transition-colors duration-normal ease-out group-hover:bg-primary group-hover:text-primary-foreground shadow-sm">
               {card.icon}
             </div>
-            <h3 className="text-lg font-semibold text-foreground">{card.title}</h3>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{card.description}</p>
+            <h3 className="text-h3 text-foreground">{card.title}</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{card.description}</p>
           </motion.div>
         ))}
       </div>

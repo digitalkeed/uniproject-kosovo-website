@@ -39,10 +39,10 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section className="bg-gradient-to-b from-muted/40 to-muted/60">
-      <div className="text-center mb-12">
+    <Section className="bg-white">
+      <div className="text-center mb-10">
         <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-          Si funksionon
+          Porosisni shërbimin tuaj në 3 hapa
         </h2>
         <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
           Tre hapa të thjeshtë – nga kërkesa juaj deri te rezultati.
@@ -52,15 +52,15 @@ export function HowItWorks() {
         {steps.map((s, i) => (
           <motion.div
             key={s.step}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
+            transition={{ duration: 0.35, delay: i * 0.08 }}
             className="relative"
           >
-            <div className="h-full rounded-xl border border-border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20">
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+            <div className="h-full rounded-[1.25rem] border border-slate-100 bg-section-alt/50 p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/15">
+              <div className="flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[var(--shadow-card)]">
                   {s.icon}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -68,25 +68,19 @@ export function HowItWorks() {
                     Hapi {s.step}
                   </span>
                   <h3 className="mt-0.5 text-lg font-semibold text-foreground">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {s.description}
+                  </p>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground leading-relaxed pl-0 md:pl-16">
-                {s.description}
-              </p>
             </div>
-            {i < steps.length - 1 && (
-              <div
-                className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-primary/30 -translate-y-1/2 z-0"
-                aria-hidden
-              />
-            )}
           </motion.div>
         ))}
       </div>
       <div className="mt-10 text-center">
         <Link
           href="/kontakt"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg transition-all duration-200"
+          className="inline-flex items-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card-hover)] hover:bg-primary/90 hover:shadow-lg transition-all duration-200"
         >
           Kerko oferte
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

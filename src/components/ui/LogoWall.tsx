@@ -29,7 +29,7 @@ export function LogoWall({ logos, title }: LogoWallProps) {
           >
             {logo.placeholder || !logo.src ? (
               <div
-                className="h-12 w-28 rounded-lg bg-white border border-border shadow-sm flex items-center justify-center text-xs font-medium text-muted-foreground hover:border-primary/30 hover:shadow transition-all duration-300"
+                className="h-12 w-28 rounded-xl bg-white border border-slate-100 shadow-[var(--shadow-card)] flex items-center justify-center text-xs font-semibold text-muted-foreground hover:border-primary/20 hover:shadow-[var(--shadow-card-hover)] transition-all duration-300"
                 title={logo.name}
               >
                 {logo.name}

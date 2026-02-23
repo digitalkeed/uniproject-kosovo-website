@@ -18,7 +18,7 @@ export function Section({
   return (
     <Component
       id={id}
-      className={`py-section px-4 sm:px-6 ${className}`}
+      className={`py-section px-container-px ${className}`}
     >
       <div
         className={`mx-auto max-w-container w-full ${innerClassName}`}
