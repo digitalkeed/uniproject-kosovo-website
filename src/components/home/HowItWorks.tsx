@@ -39,16 +39,17 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section className="bg-white">
-      <div className="text-center mb-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+    <Section className="bg-surface py-section">
+      <div className="text-center mb-ds-56">
+        <p className="text-label text-muted-foreground">Si funksionon</p>
+        <h2 className="mt-3 text-h2 text-foreground">
           Porosisni shërbimin tuaj në 3 hapa
         </h2>
-        <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
+        <p className="mt-4 text-muted-foreground max-w-prose mx-auto leading-relaxed">
           Tre hapa të thjeshtë – nga kërkesa juaj deri te rezultati.
         </p>
       </div>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-ds-24 md:grid-cols-3">
         {steps.map((s, i) => (
           <motion.div
             key={s.step}
@@ -58,17 +59,14 @@ export function HowItWorks() {
             transition={{ duration: 0.35, delay: i * 0.08 }}
             className="relative"
           >
-            <div className="h-full rounded-[1.25rem] border border-slate-100 bg-section-alt/50 p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/15">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[var(--shadow-card)]">
-                  {s.icon}
-                </div>
+            <div className="h-full rounded-card border border-border bg-surface p-[var(--card-padding)] shadow-soft transition-all duration-200 hover:shadow-soft hover:border-border-strong">
+              <div className="flex items-start gap-ds-16">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-card bg-primary text-primary-foreground font-heading text-xl font-semibold">
+                  {s.step}
+                </span>
                 <div className="flex-1 min-w-0">
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">
-                    Hapi {s.step}
-                  </span>
-                  <h3 className="mt-0.5 text-lg font-semibold text-foreground">{s.title}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="text-h3 text-foreground">{s.title}</h3>
+                  <p className="mt-ds-12 text-sm text-muted-foreground leading-relaxed">
                     {s.description}
                   </p>
                 </div>
@@ -77,10 +75,10 @@ export function HowItWorks() {
           </motion.div>
         ))}
       </div>
-      <div className="mt-10 text-center">
+      <div className="mt-ds-40 text-center">
         <Link
           href="/kontakt"
-          className="inline-flex items-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card-hover)] hover:bg-primary/90 hover:shadow-lg transition-all duration-200"
+          className="inline-flex items-center gap-2 rounded-button min-h-[var(--button-height)] px-6 bg-primary text-primary-foreground font-semibold shadow-soft hover:bg-primary-hover transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         >
           Kerko oferte
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

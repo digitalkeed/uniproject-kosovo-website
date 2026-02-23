@@ -43,6 +43,7 @@ type Service = {
   shortDescription: string;
   tags?: string[];
   icon?: string;
+  whatYouGet?: string[];
 };
 
 type ServiceCardProps = {
@@ -56,19 +57,26 @@ export function ServiceCard({ service }: ServiceCardProps) {
   return (
     <Link
       href={`/sherbimet/${service.slug}`}
-      className="group block rounded-xl bg-surface border border-border p-8 min-h-[220px]
-        shadow-[var(--shadow-card)]
+      className="group block rounded-card bg-surface border border-border p-[var(--card-padding)] min-h-[220px]
+        shadow-soft
         transition-all duration-200 ease-out
-        hover:-translate-y-1.5 hover:shadow-[var(--shadow-card-hover)] hover:border-[var(--border-strong)]
+        hover:-translate-y-0.5 hover:shadow-soft hover:border-border-strong
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
     >
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-200 group-hover:bg-primary/20">
         {icon}
       </div>
-      <h3 className="mt-5 text-lg font-semibold text-foreground">{service.title}</h3>
+      <h3 className="mt-5 text-h3 text-foreground">{service.title}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed line-clamp-2">
         {service.shortDescription}
       </p>
+      {service.whatYouGet && service.whatYouGet.length > 0 && (
+        <ul className="mt-ds-16 space-y-1 text-sm text-muted-foreground list-disc list-inside">
+          {service.whatYouGet.slice(0, 4).map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      )}
       {tags.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
           {tags.map((tag) => (

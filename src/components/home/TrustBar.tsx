@@ -13,24 +13,24 @@ const stats = [
 
 export function TrustBar() {
   return (
-    <Section className="bg-surface">
-      <motion.h2
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="text-h2 text-center font-bold text-foreground mb-2"
-      >
-        Numrat tregojnë historinë tonë
-      </motion.h2>
+    <Section className="bg-surface py-section">
       <motion.p
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center text-body-lg text-muted-foreground mb-12 max-w-content mx-auto"
+        className="text-label text-center text-muted-foreground mb-2"
       >
-        I besuar nga banka, qendra tregtare, institucione publike dhe biznese në të gjithë Kosovën
+        I besuar nga…
       </motion.p>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <motion.h2
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-h2 text-center text-foreground mb-ds-12"
+      >
+        Banka, qendra tregtare, institucione dhe biznese në Kosovë
+      </motion.h2>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-ds-24 sm:gap-ds-32">
         {stats.map((s, i) => (
           <Stat key={s.label} value={s.value} label={s.label} index={i} />
         ))}

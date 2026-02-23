@@ -1,33 +1,34 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
+import { Badge } from "@/components/ui/Badge";
 
 const heroImage =
   "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80";
 
-const trustBadges = [
-  "Oferta e shpejtë",
-  "Pa kontratë të detyrueshme",
-  "Standarde ISO",
+const statChips = [
+  { value: "24+", label: "vite" },
+  { value: "270+", label: "staf" },
 ];
 
 export function Hero() {
   return (
-    <Section className="relative overflow-hidden bg-hero-tint pt-20 pb-0 sm:pt-24 lg:pt-28">
-      <div className="grid gap-14 lg:grid-cols-2 lg:gap-20 lg:items-center">
+    <Section className="relative overflow-hidden bg-hero-tint py-section">
+      <div className="grid gap-ds-56 lg:grid-cols-2 lg:gap-ds-72 lg:items-center">
         <div className="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
-          <p className="text-caption text-primary">
+          <p className="text-label text-primary">
             Lider në Kosovë që nga 2001
           </p>
-          <h1 className="mt-4 text-hero font-bold text-foreground text-balance">
+          <h1 className="mt-4 text-h1 text-foreground text-balance">
             Mjedise të pastra. Objekte funksionale. Shërbim 24/7.
           </h1>
-          <p className="mt-6 text-body-lg text-muted-foreground max-w-prose mx-auto lg:mx-0">
+          <p className="mt-6 text-[length:var(--text-body)] text-muted-foreground max-w-prose mx-auto lg:mx-0 leading-relaxed">
             UNI PROJECT ofron pastrim profesional, mirembajtje teknike dhe
             facility management në të gjithë Kosovën – me standarde ISO, staf të
-            trajnuar dhe raportim dixhital.
+            trajnuara dhe raportim dixhital.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
+          <div className="mt-ds-40 flex flex-wrap justify-center lg:justify-start gap-ds-16">
             <Button href="/kontakt" variant="primary">
               Kerko oferte
             </Button>
@@ -35,15 +36,13 @@ export function Hero() {
               Na kontakto
             </Button>
           </div>
-          <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
-            {trustBadges.map((label) => (
-              <span key={label} className="badge-pill">
-                {label}
-              </span>
-            ))}
+          <div className="mt-ds-32 flex flex-wrap justify-center lg:justify-start gap-ds-12">
+            <Badge>Oferta e shpejtë</Badge>
+            <Badge variant="muted">Pa kontratë të detyrueshme</Badge>
+            <Badge variant="primary">Standarde ISO</Badge>
           </div>
         </div>
-        <div className="relative aspect-[4/3] min-h-[280px] sm:min-h-[340px] lg:min-h-[420px] rounded-card overflow-hidden shadow-hero border border-border">
+        <div className="relative aspect-[4/3] min-h-[280px] sm:min-h-[340px] lg:min-h-[420px] rounded-hero overflow-hidden shadow-soft border border-border">
           <Image
             src={heroImage}
             alt="Pastrim profesional – ambient i pastër dhe i rregulluar"
@@ -53,6 +52,17 @@ export function Hero() {
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-ds-12">
+            {statChips.map((chip) => (
+              <span
+                key={chip.label}
+                className="inline-flex flex-col rounded-card bg-surface/95 backdrop-blur px-4 py-2 shadow-soft border border-border"
+              >
+                <span className="font-heading text-lg font-semibold text-foreground">{chip.value}</span>
+                <span className="text-label text-muted-foreground">{chip.label}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </Section>

@@ -51,11 +51,11 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="mt-8 rounded-2xl border border-slate-100 bg-primary/5 p-8 text-center shadow-[var(--shadow-card)]">
-        <h2 className="text-xl font-semibold text-foreground">
+      <div className="mt-ds-32 rounded-card border border-border bg-primary/5 p-ds-32 text-center shadow-soft">
+        <h2 className="text-h3 text-foreground">
           Faleminderit
         </h2>
-        <p className="mt-2 text-muted-foreground">
+        <p className="mt-2 text-muted-foreground leading-relaxed">
           Mesazhi juaj u dërgua. Do të ju kontaktojmë shumë shpejt, brenda
           24–48 orëve.
         </p>
@@ -63,8 +63,11 @@ export function ContactForm() {
     );
   }
 
+  const inputClass =
+    "mt-1.5 w-full min-h-[44px] rounded-card border border-border px-4 text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors";
+
   return (
-    <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+    <form onSubmit={handleSubmit} className="mt-ds-32 space-y-ds-16">
       <div>
         <label
           htmlFor="lokacione"
@@ -77,7 +80,7 @@ export function ContactForm() {
           name="lokacione"
           type="text"
           required
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+          className={inputClass}
           placeholder="p.sh. Prishtinë, objekt A"
           aria-invalid={!!errors.lokacione}
         />
@@ -93,7 +96,7 @@ export function ContactForm() {
           id="m2"
           name="m2"
           type="text"
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+          className={inputClass}
           placeholder="p.sh. 500"
         />
       </div>
@@ -107,7 +110,7 @@ export function ContactForm() {
         <select
           id="frekuenca"
           name="frekuenca"
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary"
+          className={inputClass}
         >
           <option value="">Zgjidhni</option>
           <option value="ditor">Ditor</option>
@@ -125,7 +128,7 @@ export function ContactForm() {
         <select
           id="sektor"
           name="sektor"
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary"
+          className={inputClass}
         >
           <option value="">Zgjidhni</option>
           <option value="banka">Banka</option>
@@ -143,7 +146,7 @@ export function ContactForm() {
           id="sla"
           name="sla"
           type="text"
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+          className={inputClass}
         />
       </div>
       <div>
@@ -157,7 +160,7 @@ export function ContactForm() {
           id="orari"
           name="orari"
           type="text"
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+          className={inputClass}
           placeholder="p.sh. 08:00 - 16:00"
         />
       </div>
@@ -173,7 +176,7 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+          className={inputClass}
           placeholder="email@shembull.com"
           aria-invalid={!!errors.email}
         />
@@ -192,7 +195,7 @@ export function ContactForm() {
           id="mesazh"
           name="mesazh"
           rows={3}
-          className="mt-1 w-full rounded-xl border border-slate-200 px-3 py-2 text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
+          className={`${inputClass} min-h-[80px]`}
         />
       </div>
       {status === "error" && (

@@ -43,7 +43,7 @@ export function TrustStrip() {
       {trustItems.map(({ icon, label }) => (
         <span
           key={label}
-          className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-surface border border-border text-foreground text-sm font-medium shadow-[var(--shadow-xs)] transition-all duration-200 hover:shadow-sm hover:border-[var(--border-strong)] hover:bg-primary/5"
+          className="inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-button bg-surface border border-border text-foreground text-sm font-medium shadow-soft transition-all duration-200 hover:border-border-strong hover:bg-primary/5"
         >
           {icon}
           <span>{label}</span>

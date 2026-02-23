@@ -33,14 +33,14 @@ export function PageHero({
       }
     >
       {lead && (
-        <p className="text-sm font-medium text-primary uppercase tracking-wider">
+        <p className="text-label text-primary">
           {lead}
         </p>
       )}
-      <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-tight">
+      <h1 className="mt-2 text-h1 text-foreground">
         {title}
       </h1>
-      <p className="mt-4 text-lg text-muted-foreground">{description}</p>
+      <p className="mt-4 text-[length:var(--text-body)] text-muted-foreground leading-relaxed">{description}</p>
       {(ctaPrimary || ctaSecondary) && (
         <div
           className={`mt-8 flex flex-wrap gap-4 ${isCenter ? "justify-center" : ""}`}
@@ -61,7 +61,7 @@ export function PageHero({
   );
 
   const imageBlock = (
-    <div className="relative aspect-[4/3] min-h-[260px] sm:min-h-[320px] rounded-2xl overflow-hidden shadow-[var(--shadow-hero)]">
+    <div className="relative aspect-[4/3] min-h-[260px] sm:min-h-[320px] rounded-hero overflow-hidden shadow-soft">
       <Image
         src={image.src}
         alt={image.alt}
@@ -76,8 +76,8 @@ export function PageHero({
 
   if (isFull) {
     return (
-      <Section className="relative overflow-hidden bg-gradient-to-b from-slate-100 to-background pt-16 pb-12 sm:pt-20">
-        <div className="relative aspect-[21/9] min-h-[280px] sm:min-h-[360px] rounded-2xl overflow-hidden">
+      <Section className="relative overflow-hidden bg-hero-tint py-section">
+        <div className="relative aspect-[21/9] min-h-[280px] sm:min-h-[360px] rounded-hero overflow-hidden">
           <Image
             src={image.src}
             alt={image.alt}
@@ -120,17 +120,17 @@ export function PageHero({
 
   if (isCenter) {
     return (
-      <Section className="relative overflow-hidden bg-gradient-to-b from-slate-100 to-background pt-16 pb-12 sm:pt-20">
+      <Section className="relative overflow-hidden bg-hero-tint py-section">
         {textBlock}
-        <div className="mt-10 max-w-4xl mx-auto">{imageBlock}</div>
+        <div className="mt-ds-40 max-w-4xl mx-auto">{imageBlock}</div>
       </Section>
     );
   }
 
   const imageFirst = layout === "imageLeft";
   return (
-    <Section className="relative overflow-hidden bg-gradient-to-b from-slate-100 to-background pt-16 pb-12 sm:pt-20">
-      <div className="grid gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
+    <Section className="relative overflow-hidden bg-hero-tint py-section">
+      <div className="grid gap-ds-40 lg:grid-cols-2 lg:gap-ds-56 lg:items-center">
         {imageFirst ? (
           <>
             {imageBlock}

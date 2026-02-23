@@ -19,9 +19,9 @@ export function CTA({
   secondaryHref,
 }: CTAProps) {
   return (
-    <Section className="bg-primary text-primary-foreground py-16 sm:py-20">
+    <Section className="bg-primary text-primary-foreground py-section">
       <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">{title}</h2>
+        <h2 className="text-h2 text-white">{title}</h2>
         {description && (
           <p className="mt-4 text-lg text-primary-foreground/90 leading-relaxed">{description}</p>
         )}

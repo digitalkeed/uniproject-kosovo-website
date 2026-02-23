@@ -2,9 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Section } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
-import { CardGrid } from "@/components/ui/CardGrid";
-import { CTA } from "@/components/ui/CTA";
+import { ProjectCard } from "@/components/ui/ProjectCard";
 import type { Project } from "@/content/projects";
 
 type SectorOption = { value: string; label: string };
@@ -32,107 +30,86 @@ export function ProjectsHubClient({
     });
   }, [projects, sector, typeFilter]);
 
+  const chipBase =
+    "rounded-button px-4 py-2 text-sm font-medium min-h-[44px] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+
   return (
-    <>
-      <Section className="py-14 bg-section-alt">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
-            Zgjidhni projektin
-          </h2>
-          <p className="mt-2 text-muted-foreground max-w-content mx-auto">
-            Projekte me afat dhe case studies nga eksperienca jonë.
-          </p>
-        </div>
+    <Section className="py-section bg-section-alt">
+      <div className="text-center mb-ds-56">
+        <p className="text-label text-muted-foreground">Projekte</p>
+        <h2 className="mt-3 text-h2 text-foreground">
+          Zgjidhni projektin
+        </h2>
+        <p className="mt-4 text-muted-foreground max-w-prose mx-auto leading-relaxed">
+          Projekte me afat dhe case studies nga eksperienca jonë.
+        </p>
+      </div>
 
-        <div className="flex flex-wrap gap-2 mb-10">
-          <span className="text-sm font-semibold text-muted-foreground self-center mr-1">
-            Sektor:
-          </span>
+      <div className="flex flex-wrap items-center gap-ds-12 mb-ds-40">
+        <span className="text-label text-muted-foreground">Sektor:</span>
+        <button
+          type="button"
+          onClick={() => setSector("")}
+          className={`${chipBase} ${
+            sector === ""
+              ? "bg-primary text-primary-foreground shadow-soft"
+              : "bg-surface border border-border text-foreground hover:border-border-strong"
+          }`}
+        >
+          Të gjitha
+        </button>
+        {sectorOptions.map((opt) => (
           <button
+            key={opt.value}
             type="button"
-            onClick={() => setSector("")}
-            className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-              sector === ""
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                : "bg-white text-foreground hover:bg-slate-50 border border-slate-100 shadow-[var(--shadow-card)]"
+            onClick={() => setSector(opt.value)}
+            className={`${chipBase} ${
+              sector === opt.value
+                ? "bg-primary text-primary-foreground shadow-soft"
+                : "bg-surface border border-border text-foreground hover:border-border-strong"
             }`}
           >
-            Të gjitha
+            {opt.label}
           </button>
-          {sectorOptions.map((opt) => (
-            <button
-              key={opt.value}
-              type="button"
-              onClick={() => setSector(opt.value)}
-              className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-                sector === opt.value
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "bg-white text-foreground hover:bg-slate-50 border border-slate-100 shadow-[var(--shadow-card)]"
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
-          <span className="text-sm font-semibold text-muted-foreground self-center ml-6 mr-1">
-            Lloji:
-          </span>
+        ))}
+        <span className="text-label text-muted-foreground ml-ds-24">Lloji:</span>
+        <button
+          type="button"
+          onClick={() => setTypeFilter("")}
+          className={`${chipBase} ${
+            typeFilter === ""
+              ? "bg-primary text-primary-foreground shadow-soft"
+              : "bg-surface border border-border text-foreground hover:border-border-strong"
+          }`}
+        >
+          Të gjitha
+        </button>
+        {typeOptions.map((opt) => (
           <button
+            key={opt.value}
             type="button"
-            onClick={() => setTypeFilter("")}
-            className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-              typeFilter === ""
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                : "bg-white text-foreground hover:bg-slate-50 border border-slate-100 shadow-[var(--shadow-card)]"
+            onClick={() => setTypeFilter(opt.value)}
+            className={`${chipBase} ${
+              typeFilter === opt.value
+                ? "bg-primary text-primary-foreground shadow-soft"
+                : "bg-surface border border-border text-foreground hover:border-border-strong"
             }`}
           >
-            Të gjitha
+            {opt.label}
           </button>
-          {typeOptions.map((opt) => (
-            <button
-              key={opt.value}
-              type="button"
-              onClick={() => setTypeFilter(opt.value)}
-              className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
-                typeFilter === opt.value
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "bg-white text-foreground hover:bg-slate-50 border border-slate-100 shadow-[var(--shadow-card)]"
-              }`}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
+        ))}
+      </div>
 
-        <CardGrid
-          items={filtered}
-          renderCard={(p) => (
-            <Card key={p.slug} href={`/projekte/${p.slug}`} variant="service">
-              <h2 className="text-lg font-semibold">{p.name}</h2>
-              {p.sector && (
-                <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wider">
-                  {sectorOptions.find((s) => s.value === p.sector)?.label ?? p.sector}
-                </p>
-              )}
-              <p className="mt-2 text-sm text-muted-foreground">
-                {typeOptions.find((t) => t.value === p.type)?.label} {p.period && ` · ${p.period}`}
-              </p>
-              {p.shortDescription && (
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  {p.shortDescription}
-                </p>
-              )}
-            </Card>
-          )}
-        />
-      </Section>
-      <CTA
-        title="Dëshironi të diskutoni një projekt?"
-        description="Na tregoni për objektin tuaj dhe do të ju kontaktojmë me një ofertë të përshtatshme."
-        primaryLabel="Kerko oferte"
-        primaryHref="/kontakt"
-        secondaryLabel="Shiko shërbimet"
-        secondaryHref="/sherbimet"
-      />
-    </>
+      <div className="grid gap-ds-24 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((p) => (
+          <ProjectCard
+            key={p.slug}
+            project={p}
+            sectorLabel={sectorOptions.find((s) => s.value === p.sector)?.label}
+            typeLabel={typeOptions.find((t) => t.value === p.type)?.label}
+          />
+        ))}
+      </div>
+    </Section>
   );
 }

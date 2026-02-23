@@ -38,21 +38,22 @@ function StarRating() {
 
 export function Testimonials() {
   return (
-    <Section className="bg-white">
+    <Section className="bg-section-alt py-section">
       <motion.div
-        className="text-center mb-12"
+        className="text-center mb-ds-56"
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
+        <p className="text-label text-muted-foreground">Dëshmitë</p>
+        <h2 className="mt-3 text-h2 text-foreground">
           Kënaqësia e klientit është prioriteti ynë
         </h2>
-        <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
+        <p className="mt-4 text-muted-foreground max-w-prose mx-auto leading-relaxed">
           Rezultatet tona dhe partnerët tanë flasin vetë.
         </p>
       </motion.div>
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-ds-24 md:grid-cols-3">
         {testimonials.map((t, i) => (
           <motion.div
             key={t.author}
@@ -60,13 +61,13 @@ export function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.35, delay: i * 0.08 }}
-            className="group rounded-[1.25rem] border border-slate-100 bg-white p-6 shadow-[var(--shadow-card)] flex flex-col transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:border-primary/10 hover:-translate-y-0.5"
+            className="group rounded-card border border-border bg-surface p-[var(--card-padding)] shadow-soft flex flex-col transition-all duration-200 hover:shadow-soft hover:border-border-strong hover:-translate-y-0.5"
           >
             <StarRating />
             <p className="mt-3 text-muted-foreground flex-1 leading-relaxed">
               &ldquo;{t.quote}&rdquo;
             </p>
-            <div className="mt-4 pt-4 border-t border-slate-100">
+            <div className="mt-ds-16 pt-ds-16 border-t border-border">
               <p className="font-semibold text-foreground text-sm">{t.author}</p>
               <p className="text-xs text-muted-foreground mt-0.5">{t.context}</p>
             </div>
